@@ -188,6 +188,7 @@
             justify-content: center;
             align-items: center;
             margin-top: 5px;
+            box-shadow: 0 0 5px #D1C7F7;
         }
         #connecting{
             width: 90%;
@@ -202,6 +203,7 @@
             margin-top: 5px;
             position: absolute;
             margin-top: -70px;
+            box-shadow: 0 0 5px #D1C7F7;
         }
         #refresh{
             width: 90%;
@@ -214,18 +216,7 @@
             justify-content: center;
             align-items: center;
             margin-top: -70px;
-        }
-        #noDevices{
-            width: 90%;
-            height: 70px;
-            background-color: white;
-            border-radius: 25px;
-            margin-left: 5%;
-            opacity: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: -70px;
+            box-shadow: 0 0 5px #D1C7F7;
         }
         #cantFind{
             width: 100%;
@@ -247,6 +238,37 @@
             padding-right: 25px;
             transition: 0.25s;
             z-index: 4;
+        }
+        #devices{
+            width: 100;
+            height: auto;
+            display: none;
+            opacity: 0;
+            margin-top: 5px;
+        }
+        .daiktas{
+            width: 44%;
+            height: 120px;
+            box-shadow: 0 0 5px #D1C7F7;
+            background-color: white;
+            border-radius: 25px;
+            display: inline-block;
+            margin-left: 5%;
+            vertical-align: top;
+            padding: 15px;
+            position: relative;
+        }
+        .daiktas2{
+            width: 44%;
+            height: 120px;
+            box-shadow: 0 0 5px #D1C7F7;
+            background-color: white;
+            border-radius: 25px;
+            display: inline-block;
+            margin-left: 1%;
+            vertical-align: top;
+            padding: 15px;
+            position: relative;
         }
     </style>
     <div id="screen"></div>
@@ -280,7 +302,22 @@
     <div id="noInternet"><p style="font-size: 20px;"><i class="fa-solid fa-wifi" style="color: red;"></i> Nėra interneto ryšio</p></div>
     <div id="connecting"><p style="font-size: 20px;"><i class="fa-solid fa-wifi"></i> Jungiamasi<span id="taskelis1">.</span><span id="taskelis2">.</span><span id="taskelis3">.</span></p></div>
     <div id="refresh"><p style="font-size: 20px;"><i class="fa-solid fa-arrows-rotate"></i> Atnaujinama<span id="taskelis4">.</span><span id="taskelis5">.</span><span id="taskelis6">.</span></p></div>
-    <div id="noDevices"><p style="font-size: 20px;"><i class="fa-regular fa-face-tired"></i> Nėra įrenginių</p></div>
+    <div id="devices">
+        <div class="daiktas">
+            <i class="fa-solid fa-link-slash" style="position: absolute; top: 20px; right: 20px; font-size: 17px;" id="unlink1"></i>
+            <i class="fa-solid fa-lock-open" style="position: absolute; top: 20px; right: 20px; font-size: 17px; opacity: 0;" id="unlocked"></i>
+            <i class="fa-solid fa-house-lock" id="houseLock" style="font-size: 30px; margin-top: 5px; color: darkgrey;"></i>
+            <p style="font-weight: 600; font-size: 15px; margin-top: 15px;">Užrakinimas</p>
+            <p style="color: darkgrey; font-size: 15px; margin-top: 1px;">Butas</p>
+        </div>
+        <div class="daiktas2">
+            <i class="fa-solid fa-link-slash" style="position: absolute; top: 20px; right: 20px; font-size: 17px;" id="unlink2"></i>
+            <i class="fa-solid fa-bolt" style="position: absolute; top: 20px; right: 20px; font-size: 17px; opacity: 0;" id="charge"></i>
+            <i class="fa-solid fa-robot" id="robot" style="font-size: 30px; margin-top: 5px; color: darkgrey;"></i>
+            <p style="font-weight: 600; font-size: 15px; margin-top: 15px;">Rudolfas</p>
+            <p style="color: darkgrey; font-size: 15px; margin-top: 1px;">Butas</p>
+        </div>
+    </div>
 
     <div id="black" onclick="closeLocation()"></div>
     <div id="locationAccess">
@@ -320,7 +357,7 @@
         function loadFunction(){
             setTimeout(() => {
                 document.getElementById("screen").style.opacity = "0";
-            }, 100);
+            }, 1000);
             setTimeout(() => {
                 document.getElementById("screen").style.display = "none";
             }, 1300);
@@ -621,11 +658,29 @@
                 document.getElementById("taskelis6").style.opacity = "1";
             }, 17300);
             setTimeout(() => {
-                document.getElementById("noDevices").style.opacity = "1";
+                document.getElementById("refresh").style.opacity = "0";
+                document.getElementById("devices").style.display = "block";
             }, 17600);
             setTimeout(() => {
-                document.getElementById("refresh").style.opacity = "0";
-            }, 17700);
+                document.getElementById("devices").style.opacity = "1";
+                document.getElementById("refresh").style.display = "none";
+                document.getElementById("noInternet").style.display = "none";
+                document.getElementById("connecting").style.display = "none";
+            }, 17900);
+            setTimeout(() => {
+                document.getElementById("unlink1").style.opacity = "0";
+            }, 20200);
+            setTimeout(() => {
+                document.getElementById("unlocked").style.opacity = "1";
+                document.getElementById("houseLock").style.color = "#ADC0EF";
+            }, 20500);
+            setTimeout(() => {
+                document.getElementById("unlink2").style.opacity = "0";
+            }, 22500);
+            setTimeout(() => {
+                document.getElementById("charge").style.opacity = "1";
+                document.getElementById("robot").style.color = "#ADC0EF";
+            }, 22800);
         }
         
 
