@@ -56,6 +56,7 @@
             padding-left: 25px;
             padding-right: 25px;
             transition: 0.25s;
+            z-index: 4;
         }
         #noWifi{
             width: 100%;
@@ -76,6 +77,7 @@
             padding-left: 25px;
             padding-right: 25px;
             transition: 0.25s;
+            z-index: 4;
         }
         #black{
             width: 100%;
@@ -89,6 +91,7 @@
             opacity: 0;
             display: none;
             pointer-events: none;
+            z-index: 3;
         }
         #devicesAdd{
             width: 100%;
@@ -146,16 +149,16 @@
         }
         @keyframes dot2Add{
             0%{
-                width: 20px;
-                height: 20px;
+                width: 22px;
+                height: 22px;
             }
             50%{
-                width: 27px;
-                height: 27px;
+                width: 28px;
+                height: 28px;
             }
             100%{
-                width: 20px;
-                height: 20px;
+                width: 22px;
+                height: 22px;
             }
         }
         @keyframes dotsOther{
@@ -165,20 +168,90 @@
                 opacity: 1;
             }
             50%{
-                width: 140px;
-                height: 140px;
+                width: 150px;
+                height: 150px;
                 opacity: 0;
             }
             100%{
-                width: 140px;
-                height: 140px;
+                width: 150px;
+                height: 150px;
                 opacity: 0;
             }
+        }
+        #noInternet{
+            width: 90%;
+            height: 70px;
+            background-color: white;
+            border-radius: 25px;
+            margin-left: 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+        }
+        #connecting{
+            width: 90%;
+            height: 70px;
+            background-color: white;
+            border-radius: 25px;
+            margin-left: 5%;
+            opacity: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+            position: absolute;
+            margin-top: -70px;
+        }
+        #refresh{
+            width: 90%;
+            height: 70px;
+            background-color: white;
+            border-radius: 25px;
+            margin-left: 5%;
+            opacity: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -70px;
+        }
+        #noDevices{
+            width: 90%;
+            height: 70px;
+            background-color: white;
+            border-radius: 25px;
+            margin-left: 5%;
+            opacity: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -70px;
+        }
+        #cantFind{
+            width: 100%;
+            height: auto;
+            padding-top: 30px;
+            padding-bottom: 25px;
+            background-color: white;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: -400px;
+            border-radius: 25px 25px 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding-left: 25px;
+            padding-right: 25px;
+            transition: 0.25s;
+            z-index: 4;
         }
     </style>
     <div id="screen"></div>
     
-    <div style="width: 100%; height: 80%; position: fixed; z-index: -1; top: 0; left: 0; right: 0; background-image: linear-gradient(#D1C7F7, white);"></div>
+    <div style="width: 100%; height: 60%; position: fixed; z-index: -1; top: 0; left: 0; right: 0; background-image: linear-gradient(#D1C7F7, white);"></div>
     <div id="time" style="position: fixed; top: 15px; left: 20px; font-size: 16px; z-index: 5;"></div>
     <p style="position: fixed; top: 15px; right: 20px; font-size: 16px; text-align: right; z-index: 5;" id="iassistant">iAssistant</p>
     <i class="fa-solid fa-wifi" style="position: fixed; top: 15.5px; right: 20px; font-size: 16px; opacity: 0; z-index: 5;" id="wifi"></i>
@@ -186,7 +259,7 @@
 
 
     <p style="font-size: 20px; margin-left: 20px; font-weight: 600;">Namai</p>
-    <div style="width: 225px; height: 20px; display: flex; justify-content: center; align-items: center; margin-left: 20px; margin-top: 3px;">
+    <div style="width: 225px; height: 20px; display: flex; justify-content: center; align-items: center; margin-left: 20px; margin-top: 3px; display: none;" id="aplinka">
         <div style="width: 125px; height: 20px; display: flex; justify-content: center; align-items: center;">
             <p style="font-size: 13px; width: 90px; height: 20px; text-align: center; display: flex; justify-content: center; align-items: center;">Temperatūra:</p>
             <input type="text" id="temperatura" style="background-color: transparent; outline: none; border: none; width: 35px; height: 20px; text-align: center; font-size: 13px;">
@@ -197,30 +270,46 @@
             <input type="text" id="dregme" style="background-color: transparent; outline: none; border: none; width: 35px; height: 20px; text-align: center; font-size: 13px;">
         </div>
     </div>
-    <i class="fa-solid fa-plus" style="width: 25px; height: 25px; padding: 3.5px; display: flex; justify-items: center; align-items: center; text-align: center; font-size: 17px; border: 2px solid black; border-radius: 100%; position: absolute; right: 20px; top: 80px; display: none;" id="addBtn" onclick="add()"></i>
-    <i class="fa-solid fa-plus" style="width: 25px; height: 25px; padding: 3.5px; display: flex; justify-items: center; align-items: center; text-align: center; font-size: 17px; border: 2px solid black; border-radius: 100%; position: absolute; right: 20px; top: 80px;" id="addNoWifiBtn" onclick="addNoWifi()"></i>
-    <div style="width: 100%; height: 30px; overflow: auto; white-space: nowrap; padding-left: 20px; margin-top: 50px;"><p style="font-weight: 600; display: inline-block; font-size: 23px; margin-right: 15px;">Mėgstami</p><p style="display: inline-block; font-size: 23px;">Butas</p></div>
+    <div style="width: 225px; height: 20px; display: flex; justify-content: left; align-items: center; margin-left: 20px; margin-top: 3px;" id="aplinkaNera">
+        <p style="font-size: 13px; color: darkgrey;"><i class="fa-regular fa-face-tired"></i> Nėra informacijos apie aplinką</p>
+    </div>
+    <i class="fa-solid fa-plus" style="width: 25px; height: 25px; padding-left: 0.7px; display: flex; justify-content: center; align-items: center; text-align: center; font-size: 17px; border: 2px solid black; border-radius: 100%; position: absolute; right: 20px; top: 80px; display: none;" id="addBtn" onclick="add()"></i>
+    <i class="fa-solid fa-plus" style="width: 25px; height: 25px; padding-left: 0.7px; display: flex; justify-content: center; align-items: center; text-align: center; font-size: 17px; border: 2px solid black; border-radius: 100%; position: absolute; right: 20px; top: 80px;" id="addNoWifiBtn" onclick="addNoWifi()"></i>
+    <div style="margin-top: 30px; width: 100%; height: 60px; display: flex; justify-content: center; align-items: center; flex-direction: column;"><i class="fa-regular fa-face-grin-squint" style="font-size: 30px; margin-bottom: 10px; display: none;" id="check1"></i><p style="font-size: 15px; display: none;" id="check2">Viskas gerai!</p><i class="fa-regular fa-face-dizzy" style="font-size: 30px; margin-bottom: 10px; color: darkgrey;" id="check3"></i><p style="font-size: 15px; color: darkgrey;" id="check4">Nėra informacijos</p></div>
+    <div style="width: 100%; height: 30px; overflow: auto; white-space: nowrap; padding-left: 20px; margin-top: 20px;"><p style="font-weight: 600; display: inline-block; font-size: 23px; margin-right: 15px;">Visi</p><p style="display: inline-block; font-size: 23px; opacity: 0;" id="butas">Butas</p></div>
+    <div id="noInternet"><p style="font-size: 20px;"><i class="fa-solid fa-wifi" style="color: red;"></i> Nėra interneto ryšio</p></div>
+    <div id="connecting"><p style="font-size: 20px;"><i class="fa-solid fa-wifi"></i> Jungiamasi<span id="taskelis1">.</span><span id="taskelis2">.</span><span id="taskelis3">.</span></p></div>
+    <div id="refresh"><p style="font-size: 20px;"><i class="fa-solid fa-arrows-rotate"></i> Atnaujinama<span id="taskelis4">.</span><span id="taskelis5">.</span><span id="taskelis6">.</span></p></div>
+    <div id="noDevices"><p style="font-size: 20px;"><i class="fa-regular fa-face-tired"></i> Nėra įrenginių</p></div>
+
     <div id="black" onclick="closeLocation()"></div>
     <div id="locationAccess">
-        <i class="fa-solid fa-location-arrow" style="color: #ADC0EF; font-size: 50px; margin-bottom: 10px;"></i>
+        <i class="fa-solid fa-location-arrow" style="color: #ADC0EF; font-size: 60px; margin-bottom: 10px;"></i>
         <p style="font-size: 20px; margin-bottom: 30px;">Reikalinga vietovės prieeiga</p>
         <p style="font-size: 15px; color: darkgrey; margin-bottom: 10px;">Norėdami pridėti naują įrenginį turite suteikti prieeigą prie vietovės.</p>
         <p style="font-size: 15px; color: darkgrey; margin-bottom: 30px;">Nesuteikę prieeigos prie vietovės įrenginių pridėti negalėsite.</p>
         <div style="width: 100%; height: 40px; display: flex; justify-content: space-around; align-items: center; position: relative;">
             <button style="width: 45%; height: 40px; border-radius: 25px; border: none; background-color: lightgrey; color: white; pointer-events: none; transition: 0.3s transform; opacity: 0.4;" id="atsauktiLocation" onclick="cancelLocation()">Atšaukti</button>
             <button style="width: 45%; height: 40px; border-radius: 25px; border: none; background-color: #ADC0EF; color: white; display: none;" id="leistiLocation" onclick="addDeviceConfirm()">Leisti</button>
-            <button style="width: 45%; height: 40px; border-radius: 25px; border: 2px solid #ADC0EF; background-color: white; color: black;" id="laikasLocation"><span id="trysS">3s</span><span style="display: none;" id="dviS">2s</span><span style="display: none;" id="vienaS">1s</span></button>
+            <button style="width: 45%; height: 40px; border-radius: 25px; border: 2px solid #ADC0EF; background-color: white; color: black;" id="laikasLocation"><span id="trysS"><i class="fa-regular fa-clock"></i> 3s</span><span style="display: none;" id="dviS"><i class="fa-regular fa-clock"></i> 2s</span><span style="display: none;" id="vienaS"><i class="fa-regular fa-clock"></i> 1s</span></button>
         </div>
     </div>
     <div id="noWifi">
-        <i class="fa-solid fa-wifi" style="color: red; font-size: 50px; margin-bottom: 10px;"></i>
+        <i class="fa-solid fa-wifi" style="color: red; font-size: 60px; margin-bottom: 10px;"></i>
         <p style="font-size: 20px; margin-bottom: 30px;">Nėra interneto ryšio</p>
         <p style="font-size: 15px; color: darkgrey; margin-bottom: 10px;">Norėdami pridėti naują įrenginį turite būti prisijungę.</p>
-        <p style="font-size: 15px; color: darkgrey; margin-bottom: 30px;">Jei interneto ryšys neatsiranda, o jūs esate prisijungę, rašykite pagalbos centrui.</p>
+        <p style="font-size: 15px; color: darkgrey; margin-bottom: 30px;">Jei interneto ryšys neatsiranda, o jūs esate prisijungę, praneškite pagalbos centrui.</p>
         <button style="width: 100%; height: 40px; border-radius: 25px; border: none; background-color: #ADC0EF; color: white;" id="closeWifi" onclick="wifiClose()">Gerai</button>
     </div>
+    <div id="cantFind">
+        <i class="fa-solid fa-question" style="color: black; font-size: 60px; margin-bottom: 10px;"></i>
+        <p style="font-size: 20px; margin-bottom: 30px;">Nematote įrenginio?</p>
+        <p style="font-size: 15px; color: darkgrey; margin-bottom: 10px;">Įsitikinkite, jog įrenginys yra įjungtas ir nustatytas iš naujo.</p>
+        <p style="font-size: 15px; color: darkgrey; margin-bottom: 30px;">Jei vistiek nematote įrenginio, praneškite pagalbos centrui.</p>
+        <button style="width: 100%; height: 40px; border-radius: 25px; border: none; background-color: #ADC0EF; color: white;" id="closeHelpAdd" onclick="helpAddClose()">Gerai</button>
+    </div>
     <div id="devicesAdd">
-        <div id="informationAdd"><i class="fa-solid fa-chevron-left" style="position: absolute; font-size: 20px; left: 20px; height: 100%; display: flex; justify-content: center; align-items: center;" id="addChevron" onclick="closeAdd()"></i><p style="height: 100%; display: flex; justify-content: center; align-items: center; font-weight: 600; opacity: 0;">Pridėti įrenginį</p></div>
+        <div id="informationAdd"><i class="fa-solid fa-chevron-left" style="position: absolute; font-size: 20px; left: 20px; height: 100%; display: flex; justify-content: center; align-items: center;" id="addChevron" onclick="closeAdd()"></i><i class="fa-solid fa-question" style="position: absolute; font-size: 20px; right: 20px; height: 100%; display: flex; justify-content: center; align-items: center;" id="addQuestion" onclick="questionAdd()"></i></div>
         <h1 style="font-size: 25px; margin-top: 110px; margin-left: 20px;">Pridėti įrenginį</h1>
         <div id="searchAdd"><div style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; position: absolute; top: 0;"><div style="position: absolute; width: 15px; height: 15px; background-color: #ADC0EF; border-radius: 100%; animation: dot1Add 1.4s ease-in-out infinite;"></div><div style="position: absolute; box-shadow: 0 0 5px #ADC0EF; width: 15px; height: 15px; background-color: #ADC0EF; border-radius: 100%; opacity: 0.15; animation: dot2Add 1.4s ease-in-out infinite;"></div></div><p style="height: 100%; display: flex; justify-content: left; align-items: center; margin-left: 45px;">Ieškoma įrenginių netoliese...</p></div>
         <div style="width: 100px; height: 200px; border-radius: 20px; border: 5px solid black; margin: 0 auto; margin-top: 130px; background-color: white; display: flex; justify-content: center; align-items: center;"><div style="width: 3px; height: 30px; background-color: slategrey; border-radius: 0 25px 25px 0; position: absolute; margin-left: 102px; margin-top: -100px;"></div><div style="width: 3px; height: 15px; background-color: slategrey; border-radius: 0 25px 25px 0; position: absolute; margin-left: 102px; margin-top: -35px;"></div><div style="position: absolute; width: 30px; height: 30px; background-color: #ADC0EF; border-radius: 100%; animation: dotsOther 2s ease-out infinite; margin-top: -160px; z-index: -1;"></div><div style="position: absolute; width: 30px; height: 30px; background-color: #ADC0EF; border-radius: 100%; animation: dotsOther 2s ease-out infinite; animation-delay: 0.2s; margin-top: -160px; z-index: -1;"></div><div style="position: absolute; width: 30px; height: 30px; background-color: #ADC0EF; border-radius: 100%; animation: dotsOther 2s ease-out infinite; animation-delay: 0.4s; margin-top: -160px; z-index: -1;"></div><div style="position: absolute; width: 30px; height: 30px; background-color: #ADC0EF; border-radius: 100%; animation: dotsOther 2s ease-out infinite; animation-delay: 0.6s; margin-top: -160px; z-index: -1;"></div></div>
@@ -234,100 +323,183 @@
             }, 100);
             setTimeout(() => {
                 document.getElementById("screen").style.display = "none";
-            }, 400);
+            }, 1300);
             setTimeout(() => {
                 document.getElementById("iassistant").style.right = "50px";
-            }, 1400);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
-            }, 1700);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
-            }, 2000);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
             }, 2300);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("wifi").style.opacity = "1";;
+                document.getElementById("connecting").style.opacity = "1";
             }, 2600);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("noInternet").style.opacity = "0";
+                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("taskelis1").style.opacity = "0";
+                document.getElementById("taskelis2").style.opacity = "0";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 2900);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "0";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 3200);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "2";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 3500);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "1";
+                document.getElementById("taskelis3").style.opacity = "1";
             }, 3800);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("taskelis1").style.opacity = "0";
+                document.getElementById("taskelis2").style.opacity = "0";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 4100);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "0";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 4400);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "1";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 4700);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "1";
+                document.getElementById("taskelis3").style.opacity = "1";
             }, 5000);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("taskelis1").style.opacity = "0";
+                document.getElementById("taskelis2").style.opacity = "0";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 5300);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "0";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 5600);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "1";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 5900);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "1";
+                document.getElementById("taskelis3").style.opacity = "1";
             }, 6200);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("taskelis1").style.opacity = "0";
+                document.getElementById("taskelis2").style.opacity = "0";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 6500);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "0";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 6800);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "1";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 7100);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "1";
+                document.getElementById("taskelis3").style.opacity = "1";
             }, 7400);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("taskelis1").style.opacity = "0";
+                document.getElementById("taskelis2").style.opacity = "0";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 7700);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "0";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 8000);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "1";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 8300);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "1";
+                document.getElementById("taskelis3").style.opacity = "1";
             }, 8600);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("taskelis1").style.opacity = "0";
+                document.getElementById("taskelis2").style.opacity = "0";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 8900);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "0";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 9200);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "1";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 9500);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "1";
+                document.getElementById("taskelis3").style.opacity = "1";
             }, 9800);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("taskelis1").style.opacity = "0";
+                document.getElementById("taskelis2").style.opacity = "0";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 10100);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "0";
+                document.getElementById("taskelis3").style.opacity = "0";
             }, 10400);
+            setTimeout(() => {
+                document.getElementById("wifi").style.opacity = "0";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "1";
+                document.getElementById("taskelis3").style.opacity = "0";
+            }, 10700);
+            setTimeout(() => {
+                document.getElementById("wifi").style.opacity = "1";
+                document.getElementById("taskelis1").style.opacity = "1";
+                document.getElementById("taskelis2").style.opacity = "1";
+                document.getElementById("taskelis3").style.opacity = "1";
+            }, 11000);
             setTimeout(() => {
                 document.getElementById("wifi").style.opacity = "1";
                 document.getElementById("addNoWifiBtn").style.display = "none";
@@ -335,10 +507,125 @@
                 document.getElementById("noWifi").style.bottom = "-400px";
                 document.getElementById("black").style.opacity = "0";
                 document.getElementById("black").style.pointerEvents = "none";
-            }, 10700);
+                document.getElementById("refresh").style.opacity = "1";
+            }, 11300);
+            setTimeout(() => {
+                document.getElementById("connecting").style.opacity = "0";
+            }, 11400);
             setTimeout(() => {
                 document.getElementById("black").style.display = "none";
-            }, 11000);
+                document.getElementById("taskelis4").style.opacity = "0";
+                document.getElementById("taskelis5").style.opacity = "0";
+                document.getElementById("taskelis6").style.opacity = "0";
+            }, 11600);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "1";
+                document.getElementById("taskelis5").style.opacity = "0";
+                document.getElementById("taskelis6").style.opacity = "0";
+            }, 11900);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "1";
+                document.getElementById("taskelis5").style.opacity = "1";
+                document.getElementById("taskelis6").style.opacity = "0";
+            }, 12200);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "1";
+                document.getElementById("taskelis5").style.opacity = "1";
+                document.getElementById("taskelis6").style.opacity = "1";
+            }, 12500);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "0";
+                document.getElementById("taskelis5").style.opacity = "0";
+                document.getElementById("taskelis6").style.opacity = "0";
+            }, 12800);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "1";
+                document.getElementById("taskelis5").style.opacity = "0";
+                document.getElementById("taskelis6").style.opacity = "0";
+            }, 13100);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "1";
+                document.getElementById("taskelis5").style.opacity = "1";
+                document.getElementById("taskelis6").style.opacity = "0";
+            }, 13400);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "1";
+                document.getElementById("taskelis5").style.opacity = "1";
+                document.getElementById("taskelis6").style.opacity = "1";
+            }, 13700);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "0";
+                document.getElementById("taskelis5").style.opacity = "0";
+                document.getElementById("taskelis6").style.opacity = "0";
+                document.getElementById("aplinka").style.display = "flex";
+                document.getElementById("aplinkaNera").style.display = "none";
+            }, 14000);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "1";
+                document.getElementById("taskelis5").style.opacity = "0";
+                document.getElementById("taskelis6").style.opacity = "0";
+            }, 14300);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "1";
+                document.getElementById("taskelis5").style.opacity = "1";
+                document.getElementById("taskelis6").style.opacity = "0";
+            }, 14600);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "1";
+                document.getElementById("taskelis5").style.opacity = "1";
+                document.getElementById("taskelis6").style.opacity = "1";
+            }, 14900);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "0";
+                document.getElementById("taskelis5").style.opacity = "0";
+                document.getElementById("taskelis6").style.opacity = "0";
+                document.getElementById("check1").style.display = "block";
+                document.getElementById("check2").style.display = "block";
+                document.getElementById("check3").style.display = "none";
+                document.getElementById("check4").style.display = "none";
+            }, 15200);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "1";
+                document.getElementById("taskelis5").style.opacity = "0";
+                document.getElementById("taskelis6").style.opacity = "0";
+            }, 15500);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "1";
+                document.getElementById("taskelis5").style.opacity = "1";
+                document.getElementById("taskelis6").style.opacity = "0";
+            }, 15800);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "1";
+                document.getElementById("taskelis5").style.opacity = "1";
+                document.getElementById("taskelis6").style.opacity = "1";
+                document.getElementById("butas").style.opacity = "1";
+            }, 16100);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "0";
+                document.getElementById("taskelis5").style.opacity = "0";
+                document.getElementById("taskelis6").style.opacity = "0";
+            }, 16400);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "1";
+                document.getElementById("taskelis5").style.opacity = "0";
+                document.getElementById("taskelis6").style.opacity = "0";
+            }, 16700);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "1";
+                document.getElementById("taskelis5").style.opacity = "1";
+                document.getElementById("taskelis6").style.opacity = "0";
+            }, 17000);
+            setTimeout(() => {
+                document.getElementById("taskelis4").style.opacity = "1";
+                document.getElementById("taskelis5").style.opacity = "1";
+                document.getElementById("taskelis6").style.opacity = "1";
+            }, 17300);
+            setTimeout(() => {
+                document.getElementById("noDevices").style.opacity = "1";
+            }, 17600);
+            setTimeout(() => {
+                document.getElementById("refresh").style.opacity = "0";
+            }, 17700);
         }
         
 
@@ -413,6 +700,7 @@
             document.getElementById("black").style.pointerEvents = "none";
             document.getElementById("locationAccess").style.bottom = "-400px";
             document.getElementById("noWifi").style.bottom = "-400px";
+            document.getElementById("cantFind").style.bottom = "-400px";
             setTimeout(() => {
                 document.getElementById("black").style.display = "none";
                 document.getElementById("atsauktiLocation").style.pointerEvents = "none";
@@ -470,11 +758,9 @@
                 document.getElementById("atsauktiLocation").style.opacity = "0.4";
                 document.getElementById("laikasLocation").style.width = "0";
                 document.getElementById("laikasLocation").style.display = "block";
-                document.getElementById("leistiLocation").style.opacity = "0";
-                document.getElementById("leistiLocation").style.pointerEvents = "none";
+                document.getElementById("leistiLocation").style.display = "none";
                 document.getElementById("trysS").style.display = "block";
                 document.getElementById("vienaS").style.display = "none";
-
                 document.getElementById("devicesAdd").style.transform = "scale(1.0)";
                 document.getElementById("devicesAdd").style.opacity = "1";
                 document.getElementById("devicesAdd").style.borderRadius = "0";
@@ -490,6 +776,28 @@
             }, 100);
             setTimeout(() => {
                 document.getElementById("devicesAdd").style.display = "none";
+            }, 400);
+        }
+        function questionAdd(){
+            document.getElementById("addQuestion").style.transform = "scale(0.5)";
+            document.getElementById("black").style.display = "block";
+            document.getElementById("black").style.pointerEvents = "all";
+            setTimeout(() => {
+                document.getElementById("addQuestion").style.transform = "scale(1)";
+                document.getElementById("black").style.opacity = "0.1";
+                document.getElementById("cantFind").style.bottom = "-1px";
+            }, 100);
+        }
+        function helpAddClose(){
+            document.getElementById("closeHelpAdd").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("closeHelpAdd").style.transform = "scale(1)";
+                document.getElementById("black").style.opacity = "0";
+                document.getElementById("black").style.pointerEvents = "none";
+                document.getElementById("cantFind").style.bottom = "-400px";
+            }, 100);
+            setTimeout(() => {
+                document.getElementById("black").style.display = "none";
             }, 400);
         }
     </script>
