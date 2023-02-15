@@ -17,6 +17,7 @@
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
             transition: 0.3s;
+            user-select: none;
         }
         /* width */
         ::-webkit-scrollbar {
@@ -179,44 +180,44 @@
             }
         }
         #noInternet{
-            width: 90%;
-            height: 70px;
+            width: 95%;
+            height: 50px;
             background-color: white;
             border-radius: 25px;
-            margin-left: 5%;
+            margin-left: 2.5%;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 5px;
-            box-shadow: 0 0 5px #D1C7F7;
+            border: 1px solid #ADC0EF;
         }
         #connecting{
-            width: 90%;
-            height: 70px;
+            width: 95%;
+            height: 50px;
             background-color: white;
             border-radius: 25px;
-            margin-left: 5%;
+            margin-left: 2.5%;
             opacity: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 5px;
             position: absolute;
-            margin-top: -70px;
-            box-shadow: 0 0 5px #D1C7F7;
+            margin-top: -50px;
+            border: 1px solid #ADC0EF;
         }
         #refresh{
-            width: 90%;
-            height: 70px;
+            width: 95%;
+            height: 50px;
             background-color: white;
             border-radius: 25px;
-            margin-left: 5%;
+            margin-left: 2.5%;
             opacity: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: -70px;
-            box-shadow: 0 0 5px #D1C7F7;
+            margin-top: -50px;
+            border: 1px solid #ADC0EF;
         }
         #cantFind{
             width: 100%;
@@ -239,37 +240,151 @@
             transition: 0.25s;
             z-index: 4;
         }
-        #devices{
-            width: 100;
-            height: auto;
-            display: none;
+        #navigation{
+            width: 100%;
+            height: 60px;
+            background-color: white;
+            box-shadow: 0 0 5px white;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 13px;
+            color: darkgrey;
+            z-index: 2;
+        }
+        #notifications{
+            width: 95%;
+            height: 50px;
+            background-color: white;
+            border-radius: 25px;
+            margin-left: 2.5%;
             opacity: 0;
-            margin-top: 5px;
-        }
-        .daiktas{
-            width: 44%;
-            height: 120px;
-            box-shadow: 0 0 5px #D1C7F7;
-            background-color: white;
-            border-radius: 25px;
-            display: inline-block;
-            margin-left: 5%;
-            vertical-align: top;
-            padding: 15px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ADC0EF;
             position: relative;
         }
-        .daiktas2{
-            width: 44%;
-            height: 120px;
-            box-shadow: 0 0 5px #D1C7F7;
+        #navigation div{
+            width: 80px;
+            height: 60px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            border-top: 1px solid white;
             background-color: white;
-            border-radius: 25px;
-            display: inline-block;
-            margin-left: 1%;
-            vertical-align: top;
-            padding: 15px;
-            position: relative;
         }
+        #navigation i{
+            font-size: 25px;
+        }
+        #navigation p{
+            margin-top: -10px;
+        }
+        #white{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            z-index: 4;
+            transform: scale(0.7);
+            opacity: 0;
+            border-radius: 25px;
+            display: none;
+            pointer-events: none;
+        }
+        #lds-spinner {
+  color: official;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: none;
+  transform: scale(0.45);
+  z-index: 2;
+}
+#lds-spinner div {
+  transform-origin: 40px 40px;
+  animation: lds-spinner 0.6s linear infinite;
+}
+#lds-spinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 37px;
+  width: 6px;
+  height: 18px;
+  border-radius: 20%;
+  background: slategrey;
+}
+#lds-spinner div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -0.55s;
+}
+#lds-spinner div:nth-child(2) {
+  transform: rotate(-30deg);
+  animation-delay: -0.5s;
+}
+#lds-spinner div:nth-child(3) {
+  transform: rotate(-60deg);
+  animation-delay: -0.45s;
+}
+#lds-spinner div:nth-child(4) {
+  transform: rotate(-90deg);
+  animation-delay: -0.4s;
+}
+#lds-spinner div:nth-child(5) {
+  transform: rotate(-120deg);
+  animation-delay: -0.35s;
+}
+#lds-spinner div:nth-child(6) {
+  transform: rotate(-150deg);
+  animation-delay: -0.3s;
+}
+#lds-spinner div:nth-child(7) {
+  transform: rotate(-180deg);
+  animation-delay: -0.25s;
+}
+#lds-spinner div:nth-child(8) {
+  transform: rotate(-210deg);
+  animation-delay: -0.2s;
+}
+#lds-spinner div:nth-child(9) {
+  transform: rotate(-240deg);
+  animation-delay: -0.15s;
+}
+#lds-spinner div:nth-child(10) {
+  transform: rotate(-270deg);
+  animation-delay: -0.1s;
+}
+#lds-spinner div:nth-child(11) {
+  transform: rotate(-300deg);
+  animation-delay: -0.05s;
+}
+#lds-spinner div:nth-child(12) {
+  transform: rotate(-330deg);
+  animation-delay: 0s;
+}
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+  
     </style>
     <div id="screen"></div>
     
@@ -297,25 +412,41 @@
     </div>
     <i class="fa-solid fa-plus" style="width: 25px; height: 25px; padding-left: 0.7px; display: flex; justify-content: center; align-items: center; text-align: center; font-size: 17px; border: 2px solid black; border-radius: 100%; position: absolute; right: 20px; top: 80px; display: none;" id="addBtn" onclick="add()"></i>
     <i class="fa-solid fa-plus" style="width: 25px; height: 25px; padding-left: 0.7px; display: flex; justify-content: center; align-items: center; text-align: center; font-size: 17px; border: 2px solid black; border-radius: 100%; position: absolute; right: 20px; top: 80px;" id="addNoWifiBtn" onclick="addNoWifi()"></i>
-    <div style="margin-top: 30px; width: 100%; height: 60px; display: flex; justify-content: center; align-items: center; flex-direction: column;"><i class="fa-regular fa-face-grin-squint" style="font-size: 30px; margin-bottom: 10px; display: none;" id="check1"></i><p style="font-size: 15px; display: none;" id="check2">Viskas gerai!</p><i class="fa-regular fa-face-dizzy" style="font-size: 30px; margin-bottom: 10px; color: darkgrey;" id="check3"></i><p style="font-size: 15px; color: darkgrey;" id="check4">Nėra informacijos</p></div>
-    <div style="width: 100%; height: 30px; overflow: auto; white-space: nowrap; padding-left: 20px; margin-top: 20px;"><p style="font-weight: 600; display: inline-block; font-size: 23px; margin-right: 15px;">Visi</p><p style="display: inline-block; font-size: 23px; opacity: 0;" id="butas">Butas</p></div>
+    <div style="margin-top: 30px; margin-bottom: 30px; width: 100%; height: 60px; display: flex; justify-content: center; align-items: center; flex-direction: column;"><i class="fa-regular fa-face-grin-squint" style="font-size: 30px; margin-bottom: 10px; display: none;" id="check1"></i><p style="font-size: 15px; display: none;" id="check2">Viskas gerai!</p><i class="fa-regular fa-face-dizzy" style="font-size: 30px; margin-bottom: 10px; color: darkgrey;" id="check3"></i><p style="font-size: 15px; color: darkgrey;" id="check4">Nėra informacijos</p></div>
     <div id="noInternet"><p style="font-size: 20px;"><i class="fa-solid fa-wifi" style="color: red;"></i> Nėra interneto ryšio</p></div>
     <div id="connecting"><p style="font-size: 20px;"><i class="fa-solid fa-wifi"></i> Jungiamasi<span id="taskelis1">.</span><span id="taskelis2">.</span><span id="taskelis3">.</span></p></div>
     <div id="refresh"><p style="font-size: 20px;"><i class="fa-solid fa-arrows-rotate"></i> Atnaujinama<span id="taskelis4">.</span><span id="taskelis5">.</span><span id="taskelis6">.</span></p></div>
-    <div id="devices">
-        <div class="daiktas">
-            <i class="fa-solid fa-link-slash" style="position: absolute; top: 20px; right: 20px; font-size: 17px;" id="unlink1"></i>
-            <i class="fa-solid fa-lock-open" style="position: absolute; top: 20px; right: 20px; font-size: 17px; opacity: 0;" id="unlocked"></i>
-            <i class="fa-solid fa-house-lock" id="houseLock" style="font-size: 30px; margin-top: 5px; color: darkgrey;"></i>
-            <p style="font-weight: 600; font-size: 15px; margin-top: 15px;">Užrakinimas</p>
-            <p style="color: darkgrey; font-size: 15px; margin-top: 1px;">Butas</p>
+    <div id="notifications"><p style="font-size: 20px;"><i class="fa-regular fa-envelope"></i> Pranešimų nėra</p></div>
+    <i class="fa-solid fa-rectangle-ad" style="margin-top: 20px; margin-left: 20px; font-size: 20px; color: darkgrey; opacity: 0; display: none;" id="ad"></i>
+    <img src="ad.jpg" id="adImg" onclick="adOff()" alt="REKLAMA" style="width: 95%; border-radius: 25px; margin-left: 2.5%; display: none; margin-top: 5px; opacity: 0; transition: 0.3s transform;">
+    <img src="ad2.jpg" id="adImg2" onclick="adOff2()" alt="REKLAMA" style="width: 95%; border-radius: 25px; margin-left: 2.5%; display: none; margin-top: 5px; opacity: 0; transition: 0.3s transform;">
+    <img src="ad3.jpg" id="adImg3" onclick="adOff3()" alt="REKLAMA" style="width: 95%; border-radius: 25px; margin-left: 2.5%; display: none; margin-top: 5px; opacity: 0; transition: 0.3s transform;">
+    <div id="white">
+        <div id="informationAdd"><i class="fa-solid fa-chevron-left" style="position: absolute; font-size: 20px; left: 20px; height: 100%; display: flex; justify-content: center; align-items: center; color: lightgrey; transition: 0.3s transform; z-index: 2;" id="chevronAd" onclick="adCloses()"></i><i class="fa-solid fa-chevron-left" style="position: absolute; font-size: 20px; left: 20px; height: 100%; justify-content: center; align-items: center; color: lightgrey; transition: 0.3s transform; z-index: 2; display: none;" id="chevronAd2" onclick="adCloses2()"></i><p style="font-weight: 600; height: 100%; display: flex; justify-content: center; align-items: center; display: none;" id="miHome">mi-home.lt</p><p style="font-weight: 600; height: 100%; display: flex; justify-content: center; align-items: center; display: none;" id="ikea">ikea.lt</p></div>
+        <div style="width: 0; height: 2px; background-color: #ADC0EF; position: absolute; top: 100px; left: 0; z-index: 2;" id="adLoadBar"></div>
+        <iframe id="iframe" src="https://mi-home.lt/xiaomi-12t" frameborder="0" style="position: absolute; width: 100%; height: 100%; padding-top: 100px; top: 0; left: 0; right: 0; bottom: 0; display: none; overflow: scroll;"></iframe>
+        <iframe id="iframe2" src="https://www.ikea.lt/lt/viskas-savo-vietoje" frameborder="0" style="position: absolute; width: 100%; height: 100%; padding-top: 100px; top: 0; left: 0; right: 0; bottom: 0; display: none; overflow: scroll;"></iframe>
+        <div style="width: 100px; height: 100px; background-color: white; border-radius: 25px; position: absolute; margin-top: 20px; z-index: 1; display: none; opacity: 0.9;" id="backgroundAd"></div>
+        <div id="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <p style="margin-top: -10px; font-size: 16px; color: slategrey; display: none; z-index: 2;" id="kraunasiAd">Kraunasi...</p>
+    </div>
+
+    <div id="navigation">
+        <div style="color: #ADC0EF; border-color: #ADC0EF;">
+            <i class="fa-solid fa-house"></i>
+            <p>Pagrindinis</p>
         </div>
-        <div class="daiktas2">
-            <i class="fa-solid fa-link-slash" style="position: absolute; top: 20px; right: 20px; font-size: 17px;" id="unlink2"></i>
-            <i class="fa-solid fa-bolt" style="position: absolute; top: 20px; right: 20px; font-size: 17px; opacity: 0;" id="charge"></i>
-            <i class="fa-solid fa-robot" id="robot" style="font-size: 30px; margin-top: 5px; color: darkgrey;"></i>
-            <p style="font-weight: 600; font-size: 15px; margin-top: 15px;">Rudolfas</p>
-            <p style="color: darkgrey; font-size: 15px; margin-top: 1px;">Butas</p>
+        <div>
+            <i class="fa-solid fa-hard-drive"></i>
+            <p>Įrenginiai</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-door-closed"></i>
+            <p>Kambariai</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-circle-user"></i>
+            <p>Profilis</p>
         </div>
     </div>
 
@@ -357,12 +488,12 @@
         function loadFunction(){
             setTimeout(() => {
                 document.getElementById("screen").style.opacity = "0";
-            }, 1000);
+            }, 100);
             setTimeout(() => {
                 document.getElementById("screen").style.display = "none";
             }, 1300);
             setTimeout(() => {
-                document.getElementById("iassistant").style.right = "50px";
+                document.getElementById("iassistant").style.right = "55px";
             }, 2300);
             setTimeout(() => {
                 document.getElementById("wifi").style.opacity = "1";;
@@ -659,28 +790,28 @@
             }, 17300);
             setTimeout(() => {
                 document.getElementById("refresh").style.opacity = "0";
-                document.getElementById("devices").style.display = "block";
             }, 17600);
             setTimeout(() => {
-                document.getElementById("devices").style.opacity = "1";
                 document.getElementById("refresh").style.display = "none";
                 document.getElementById("noInternet").style.display = "none";
                 document.getElementById("connecting").style.display = "none";
             }, 17900);
             setTimeout(() => {
-                document.getElementById("unlink1").style.opacity = "0";
-            }, 20200);
+                document.getElementById("notifications").style.display = "flex";
+            }, 18350);
             setTimeout(() => {
-                document.getElementById("unlocked").style.opacity = "1";
-                document.getElementById("houseLock").style.color = "#ADC0EF";
-            }, 20500);
+                document.getElementById("notifications").style.opacity = "1";
+            }, 18400);
             setTimeout(() => {
-                document.getElementById("unlink2").style.opacity = "0";
-            }, 22500);
+                document.getElementById("ad").style.display = "block";
+            }, 19950);
             setTimeout(() => {
-                document.getElementById("charge").style.opacity = "1";
-                document.getElementById("robot").style.color = "#ADC0EF";
-            }, 22800);
+                document.getElementById("ad").style.opacity = "1";
+                document.getElementById("adImg").style.display = "block";
+            }, 20000);
+            setTimeout(() => {
+                document.getElementById("adImg").style.opacity = "1";
+            }, 21000);
         }
         
 
@@ -756,9 +887,9 @@
             document.getElementById("locationAccess").style.bottom = "-400px";
             document.getElementById("noWifi").style.bottom = "-400px";
             document.getElementById("cantFind").style.bottom = "-400px";
+            document.getElementById("atsauktiLocation").style.pointerEvents = "none";
             setTimeout(() => {
                 document.getElementById("black").style.display = "none";
-                document.getElementById("atsauktiLocation").style.pointerEvents = "none";
                 document.getElementById("atsauktiLocation").style.opacity = "0.4";
                 document.getElementById("laikasLocation").style.width = "0";
                 document.getElementById("laikasLocation").style.display = "block";
@@ -769,6 +900,7 @@
         }
         function cancelLocation(){
             document.getElementById("atsauktiLocation").style.transform = "scale(0.8)";
+            document.getElementById("atsauktiLocation").style.pointerEvents = "none";
             setTimeout(() => {
                 document.getElementById("atsauktiLocation").style.transform = "scale(1)";
                 document.getElementById("black").style.opacity = "0";
@@ -777,7 +909,6 @@
             }, 100);
             setTimeout(() => {
                 document.getElementById("black").style.display = "none";
-                document.getElementById("atsauktiLocation").style.pointerEvents = "none";
                 document.getElementById("atsauktiLocation").style.opacity = "0.4";
                 document.getElementById("laikasLocation").style.width = "0";
                 document.getElementById("laikasLocation").style.display = "block";
@@ -854,6 +985,156 @@
             setTimeout(() => {
                 document.getElementById("black").style.display = "none";
             }, 400);
+        }
+        function adOff(){
+            document.getElementById("white").style.display = "flex";
+            document.getElementById("adImg").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("adImg").style.transform = "scale(1)";
+                document.getElementById("white").style.transform = "scale(1.0)";
+                document.getElementById("white").style.opacity = "1";
+                document.getElementById("white").style.borderRadius = "0";
+            }, 100);
+            setTimeout(() => {
+                document.getElementById("lds-spinner").style.display = "inline-block";
+                document.getElementById("kraunasiAd").style.display = "block";
+                document.getElementById("backgroundAd").style.display = "block";
+            }, 1100);
+            setTimeout(() => {
+                document.getElementById("miHome").style.display = "flex";
+                document.getElementById("adLoadBar").style.width = "20%";
+            }, 9100);
+            setTimeout(() => {
+                document.getElementById("adLoadBar").style.width = "30%";
+            }, 10100);
+            setTimeout(() => {
+                document.getElementById("adLoadBar").style.width = "70%";
+            }, 13100);
+            setTimeout(() => {
+                document.getElementById("adLoadBar").style.width = "80%";
+            }, 14600);
+            setTimeout(() => {
+                document.getElementById("adLoadBar").style.width = "100%";
+            }, 15800);
+            setTimeout(() => {
+                document.getElementById("iframe").style.display = "block";
+                document.getElementById("adLoadBar").style.opacity = "0";
+            }, 16100);
+            setTimeout(() => {
+                document.getElementById("lds-spinner").style.display = "none";
+                document.getElementById("kraunasiAd").style.display = "none";
+                document.getElementById("backgroundAd").style.display = "none";
+                document.getElementById("white").style.pointerEvents = "all";
+                document.getElementById("chevronAd").style.color = "black";
+            }, 21100);
+        }
+        function adCloses(){
+            document.getElementById("chevronAd").style.transform = "scale(0.5)";
+            setTimeout(() => {
+                document.getElementById("chevronAd").style.transform = "scale(1)";
+                document.getElementById("adImg").style.opacity = "0";
+                document.getElementById("ad").style.opacity = "0";
+                document.getElementById("adImg").style.display = "none";
+                document.getElementById("white").style.transform = "scale(0.7)";
+                document.getElementById("white").style.opacity = "0";
+                document.getElementById("white").style.borderRadius = "25px";
+            }, 100);
+            setTimeout(() => {
+                document.getElementById("white").style.display = "none";
+                document.getElementById("white").style.pointerEvents = "none";
+                document.getElementById("chevronAd").style.color = "darkgrey";
+                document.getElementById("iframe").style.display = "none";
+                document.getElementById("miHome").style.display = "none";
+                document.getElementById("ad").style.display = "none";
+                document.getElementById("adLoadBar").style.opacity = "1";
+                document.getElementById("adLoadBar").style.width = "0";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("ad").style.display = "block";
+            }, 10350);
+            setTimeout(() => {
+                document.getElementById("ad").style.opacity = "1";
+                document.getElementById("adImg2").style.display = "block";
+            }, 10400);
+            setTimeout(() => {
+                document.getElementById("adImg2").style.opacity = "1";
+            }, 11400);
+        }
+        function adOff2(){
+            document.getElementById("chevronAd").style.display = "none";
+            document.getElementById("chevronAd2").style.display = "flex";
+            document.getElementById("white").style.display = "flex";
+            document.getElementById("adImg2").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("adImg2").style.transform = "scale(1)";
+                document.getElementById("white").style.transform = "scale(1.0)";
+                document.getElementById("white").style.opacity = "1";
+                document.getElementById("white").style.borderRadius = "0";
+            }, 100);
+            setTimeout(() => {
+                document.getElementById("lds-spinner").style.display = "inline-block";
+                document.getElementById("kraunasiAd").style.display = "block";
+                document.getElementById("backgroundAd").style.display = "block";
+            }, 1100);
+            setTimeout(() => {
+                document.getElementById("ikea").style.display = "flex";
+                document.getElementById("adLoadBar").style.width = "20%";
+            }, 9100);
+            setTimeout(() => {
+                document.getElementById("adLoadBar").style.width = "30%";
+            }, 10100);
+            setTimeout(() => {
+                document.getElementById("adLoadBar").style.width = "70%";
+            }, 13100);
+            setTimeout(() => {
+                document.getElementById("adLoadBar").style.width = "80%";
+            }, 14600);
+            setTimeout(() => {
+                document.getElementById("adLoadBar").style.width = "100%";
+            }, 15800);
+            setTimeout(() => {
+                document.getElementById("iframe2").style.display = "block";
+                document.getElementById("adLoadBar").style.opacity = "0";
+            }, 16100);
+            setTimeout(() => {
+                document.getElementById("lds-spinner").style.display = "none";
+                document.getElementById("kraunasiAd").style.display = "none";
+                document.getElementById("backgroundAd").style.display = "none";
+                document.getElementById("white").style.pointerEvents = "all";
+                document.getElementById("chevronAd2").style.color = "black";
+            }, 21100);
+        }
+        function adCloses2(){
+            document.getElementById("chevronAd2").style.transform = "scale(0.5)";
+            setTimeout(() => {
+                document.getElementById("chevronAd2").style.transform = "scale(1)";
+                document.getElementById("adImg2").style.opacity = "0";
+                document.getElementById("ad").style.opacity = "0";
+                document.getElementById("adImg2").style.display = "none";
+                document.getElementById("white").style.transform = "scale(0.7)";
+                document.getElementById("white").style.opacity = "0";
+                document.getElementById("white").style.borderRadius = "25px";
+            }, 100);
+            setTimeout(() => {
+                document.getElementById("white").style.display = "none";
+                document.getElementById("white").style.pointerEvents = "none";
+                document.getElementById("chevronAd2").style.color = "darkgrey";
+                document.getElementById("iframe2").style.display = "none";
+                document.getElementById("ikea").style.display = "none";
+                document.getElementById("ad").style.display = "none";
+                document.getElementById("adLoadBar").style.opacity = "1";
+                document.getElementById("adLoadBar").style.width = "0";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("ad").style.display = "block";
+            }, 10350);
+            setTimeout(() => {
+                document.getElementById("ad").style.opacity = "1";
+                document.getElementById("adImg3").style.display = "block";
+            }, 10400);
+            setTimeout(() => {
+                document.getElementById("adImg3").style.opacity = "1";
+            }, 11400);
         }
     </script>
 </body>
